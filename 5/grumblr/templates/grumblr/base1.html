@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+    {% load staticfiles %}
+{% block title %}
+{% endblock title %}
+<link href="{% static 'grumblr/bootstrap_css/bootstrap.min.css' %}" rel="stylesheet">
+{% block css_reference %}
+{% endblock css_reference %}
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+      	<div class="navbar-header">
+       	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Grumblr</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+          {% block nav_title %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'login' %}">Settings</a></li>
+            <li><a href="{% url 'login' %}">Profile</a></li>
+            <li><a href="{% url 'login' %}">Help</a></li>
+          {% endblock nav_title %}
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+</div>
+{% block content %}
+{% endblock content %}
+</body>
+</html>

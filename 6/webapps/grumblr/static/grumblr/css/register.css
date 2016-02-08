@@ -1,0 +1,83 @@
+@charset "UTF-8";
+/* CSS Document */
+body{
+	background-image:url(../images/6.jpg);
+	background-size:cover;
+	background-repeat:no-repeat;
+	height:100%;
+	}
+.register_div1{
+	width:25%;
+	height:100%;
+	margin:90px 0 0 200px;
+	border:1px black solid;
+	background-image:url(../images/paper5.jpeg);
+	background-repeat:no-repeat;
+    background-size:cover;
+	}
+#title{
+	font-size:20px;
+	font-style:italic;
+	font-weight:bold;
+    color:black;
+	margin-left:80px;
+}
+.register_div2{
+		margin:20px 0 20px 10px;
+		width:100%;
+		font-size:15px;
+		font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;	
+		}
+#register_span{
+	margin-left:5px;
+	margin-bottom:20px;
+	width:100%;
+	font-size:17px;
+	font-weight:bold;
+	}
+.register_div3{
+	margin:0px 0 20px 10px;
+	
+	}
+.r1{
+	position:absolute;
+	left:325px;
+	width:140px;
+	}	
+.r2{
+	width:290px;
+	
+	}	
+.span1{
+	
+    color:black;
+	font-size:15px;
+	font-style:normal;
+}
+.span2{
+	font-size:15px;
+	font-style:normal;
+	color:gray;
+	}	
+#button1{
+	border:1px black solid;
+	background-color: #ffffff;
+	opacity:0.6;
+	margin-left:115px;
+	font-size:15px;
+	border-radius:15px;
+	cursor:pointer;
+	}	
+#button1:hover{
+	background:rgba(118,228,131,1.00);
+	}	
+.reset_div1{
+	width:25%;
+	height:100%;
+	margin:170px 0 0 200px;
+	border:1px black solid;
+	border-radius:15px;
+	background-image:url(../images/paper5.jpeg);
+	background-repeat:no-repeat;
+    background-size:cover;
+	}

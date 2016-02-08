@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<link href="bootstrap_css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/global_stream.css"/>
+</head>
+<body>
+<div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Grumblr</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="profile.html">MyProfile</a></li>
+            <li><a href="login.html">Logout</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+  </nav>
+</div>
+<div class="div1">
+<div class="div2">
+<img id="image1" src="images/111.jpg" alt="no image">
+</div>
+
+<div class="divsum">
+
+<div class="div3">
+<input type="button" class="button2" value="About" ><br/>
+<input type="button" value="Grumblr" ><br/>
+<input type="button" value="My Profile" onclick="location.href='profile.html'"><br/>
+<input type="button" value="All Posts" ><br/>
+<input type="button" value="Post a message" ><br/>
+</div>
+
+<div class="div4">
+<span>
+<textarea id="textarea1" name="txt" ></textarea>
+</span><br/>
+<input class="button1" type="button" value="Post Message" >
+<input class="button1" type="button" value="Upload Photos"><br/>
+<br/>
+<span class="hint">(42 characters or less)</span>
+
+
+<div class="single">
+<div class="div5">
+<img src="images/people1.jpeg" alt="no image" onclick="location.href='profile.html'"> 
+<a href="profile.html" >&nbsp; Tonny</a><br/>
+<input class="time" type="text" value="Today 10:40"><br/>
+<textarea class="textarea1" name="txt" readonly>
+Today,I meet an old friend.I am so happy!</textarea>
+</div>
+<div>
+<span class="word1">2 people liked this</span>
+<ul class="faceul">
+<li><img class="image" src="images/icon1.jpg" alt="no image"></li>
+<li><img class="image" src="images/icon2.jpg" alt="no image"></li>
+</ul>
+</div>
+</div>
+
+<div class="single">
+<div class="div5">
+<img src="images/people5.jpeg" alt="no image" onclick="location.href='profile.html'"> 
+<a href="profile.html"> &nbsp;Sara</a><br/>
+<input class="time" type="text" value="Yesterday 10:36"><br/>
+<textarea class="textarea1" name="txt" readonly>
+This is the most beautiful scenery which I have ever seen!</textarea>
+</div>
+<div class="div8">
+<ul class="faceul1">
+<li><img src="images/image3.jpg" alt="no image"><br/></li>
+<li><img src="images/images6.jpeg" alt="no image"><br/></li>
+<li><img src="images/images7.jpeg" alt="no image"><br/></li>
+<li><img src="images/images1.jpeg" alt="no image"><br/></li>
+</ul>
+</div>
+<div>
+<span class="word1">4 people liked this</span>
+<ul class="faceul">
+<li><img class="image" src="images/icon1.jpg" alt="no image"></li>
+<li><img class="image" src="images/icon2.jpg" alt="no image"></li>
+</ul>
+</div>
+</div>
+
+<div class="single">
+<div class="div5">
+<img src="images/people4.jpeg" alt="no image" onclick="location.href='profile.html'"> 
+<a href="profile.html">&nbsp; Lily</a><br/>
+<input class="time" type="text" value="Yesterday 20:36"><br/>
+<textarea class="textarea1" name="txt" readonly>
+It is so beautiful!</textarea>
+</div>
+<div>
+<span class="word1">1000+ people liked this</span>
+<ul class="faceul">
+<li><img class="image" src="images/icon1.jpg" alt="no image"></li>
+<li><img class="image" src="images/icon2.jpg" alt="no image"></li>
+</ul>
+</div>
+<div class="div6">
+<img src="images/people1.jpeg" alt="no image"> 
+<a href="profile.html"> Tonny:</a><input class="comment" type="text" value="It'a amazing"><br/>
+<input class="time1" type="text" value="Two days ago"><br/>
+</div>
+<div class="div6">
+<img src="images/people5.jpeg" alt="no image"> 
+<a href="profile.html"> Sara:</a>
+<input class="comment" type="text" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>30?this.value.length:30);" size="30" value="I have been there one year ago."><br/>
+<input class="time1" type="text" value="Today 10:40"><br/>
+</div>
+</div>
+
+<div class="single">
+<div class="div5">
+<img src="images/people2.jpeg" alt="no image" onclick="location.href='profile.html'"> 
+<a href="profile.html" >&nbsp; Amy</a><br/>
+<input class="time" type="text" value="ten days ago"><br/>
+<textarea class="textarea1" name="txt" readonly>
+Today,I have lunch with sheldon.</textarea>
+</div>
+<div>
+<span class="word1">4 people liked this</span>
+<ul class="faceul">
+<li><img class="image" src="images/icon1.jpg" alt="no image"></li>
+<li><img class="image" src="images/icon2.jpg" alt="no image"></li>
+</ul>
+</div>
+</div>
+
+</div>
+    <div class="right">
+        <div class="find">
+             <div id="item">
+             <h2>Finding more friend?</h2>
+             </div>
+             <div class="friend">
+            <span class="span2"><span class="font1">Celebrity&nbsp;&nbsp;&nbsp;</span><a href="#">get more</a></span>
+             <ul class="faceul2">
+               <li><img src="images/taylor.jpeg" alt="no image"><br/><a href="#">Taylor</a></li>
+               <li><img src="images/adele.jpg" alt="no image"><br/><a href="#">Adele</a></li>
+               <li><img src="images/justier.jpeg" alt="no image"><br/><a href="#">Justin</a></li>
+             </ul>
+             </div>
+         <div class="friend">
+         <span class="span2"><span class="font1">You friend</span><a href="#">get more</a></span>
+         <ul class="faceul2">
+         <li><img src="images/people1.jpeg" alt="no image"><br/><a href="#">Tonny</a></li>
+         <li><img src="images/people4.jpeg" alt="no image"><br/><a href="#">Lily</a></li>
+         <li><img src="images/people2.jpeg" alt="no image"><br/><a href="#">Amy</a></li>
+         </ul>
+         </div>
+         <div class="friend">
+         <span class="span2"><span class="font1">&nbsp;&nbsp;&nbsp;You interest</span><a href="#">get more</a></span>
+         <ul class="faceul2">
+         <li><img src="images/food.jpeg" alt="no image"><br/><a href="#">Food</a></li>
+         <li><img src="images/images7.jpeg" alt="no image"><br/><a href="#">Beach</a></li>
+         <li><img src="images/sunflower.jpeg" alt="no image"><br/><a href="#">Sunflower</a></li>
+         </ul>
+         </div>
+        </div>
+      </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+	background-image:url(../images/6.jpg);
+	background-size:cover;
+	background-repeat:no-repeat;
+	width:650px;
+	height:636px;
+	}
+.login_div1{
+	width:500px;
+	height:400px;
+	margin:120px 0 0 150px;
+	padding-top:40px;
+	
+	background-image:url(../images/cover.jpg);
+	background-repeat:no-repeat;
+    background-size:cover;
+	}
+.login_div1 span{
+	font-size:30px;
+	font-style:italic;
+	font-weight:bold;
+    color:black;
+	margin:240px 0 0 170px;
+	}
+.login_div2{
+		margin:40px 0 0 70px;
+		font-size:20px;
+		font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+		border:0;
+		}
+.user{
+	border:1px rgba(201,201,201,1.00) solid;
+	font-size:15px;
+	}		
+.login_div2 input{
+	/*border:1px yellow solid;*/
+	position:absolute;
+	left:380px;
+	width:170px;
+	background-color:transparent;
+	}	
+ label{
+	margin:20px 0 0 70px;
+	}	
+	
+.login_div3{
+	margin:40px 0 0 100px;
+		}
+		
+.login_div3 input{
+	width:100px;
+	height:30px;
+	font-size:20px;
+	font-weight:normal;
+	margin-left:80px;
+	background-color: #ffffff;
+	opacity:0.6;
+	border: 1px solid black;
+	
+	border-radius:15px;
+	cursor:pointer;
+	}
+.login_div3 input:hover{
+	background:url(../images/paper1.jpeg);
+	}	
+.login_div3 a{
+	cursor:pointer;
+	position:relative;
+	top:10px;
+	left:95px;
+	}			
+a:link{
+	color:blue;
+	text-decoration: none;
+}	
+a:hover{
+	text-decoration:underline;
+	font-size:larger;
+}
+#forget_pwd{
+	font-weight:normal;
+	margin-left:60px;
+	}	

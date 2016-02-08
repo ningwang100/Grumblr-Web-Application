@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>profile</title>
+<link href="/static/grumblr/bootstrap_css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/static/grumblr/css/profile.css"/>
+</head>
+<body>
+<div class="navation">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <a class="navbar-brand" href="#">Grumblr</a> </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/">Home</a></li>
+          <li><a href="{% url 'edit' %}">Settings</a></li>
+          <li><a href="{% url 'myProfile' %}">MyProfile</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+        <form class="navbar-form navbar-right">
+          <input type="text" class="form-control" placeholder="Search...">
+        </form>
+      </div>
+    </div>
+  </nav>
+</div>
+<span class="span2"><span class="font1">Weclome to {{user.username}}'s House</span></span>
+<div class="div1">
+  <div class="div3">
+    <form method="GET" action="/editProfile">
+      <span id="id1"> Personal information</span>
+      <div class="div5"> <img id="image1" src="{{user.last_name}}" alt="no image"> <span>
+        <input class="word1" type="text" value="First Name:">
+        <input class="word2" type="text" value="{{user.first_name}}">
+        </span> <span>
+        <input class="word1" type="text" value="Last Name:">
+        <input class="word2" type="text" value="{{newUser.photopath}}">
+        </span> <span>
+        <input class="word1" type="text" value="Username:">
+        <input class="word2" type="text" value="{{user.username}}">
+        </span> </div>
+      <div> <span>
+        <input class="word1" type="text" value="Email:">
+        <input class="word4" type="text" value="{{user.email}}">
+        </span><br/>
+        <span>
+        <input class="word1" type="text" value="Date of Birth:">
+        <input class="word4" type="text" value="1993.1.11">
+        </span><br/>
+        <span>
+        <input class="word1" type="text" value="Website:">
+        <a class="word4" type="text" href="#">http://www.{{user.username}}.com</a> </span> </div>
+      <span>
+      <input class="word1" type="text" value="Hobby:">
+      <br/>
+      <textarea id="textarea1" name="txt" readonly>Playing basketball,Swimming, traveling with friends,and play music.</textarea>
+      </span><br/>
+      {% if user.username == login_user.username %}
+      <input class="button1" type="submit" value="Edit">
+      {% endif %}	
+      {% csrf_token %}
+    </form>
+  </div>
+  <div class="div4"> {% for grumblr in grumblrs %}
+    <div class="single">
+      <div class="div6"> <img src="{{user.last_name}}" alt="no image"> <a href="/OtherProfile/{{grumblr.user.id}}" class="name">{{grumblr.user.username}}</a><br/>
+        <input class="time" type="text" value="{{grumblr.time}}">
+        <br/>
+        <textarea class="textarea1" name="text" >{{grumblr.content}}</textarea>
+      </div>
+      <div>
+        <ul class="faceul2">
+          <li>
+            <button type="button" class="btn btn-primary btn-xs reply-btn" data="{{ post.id }}"> <span class="glyphicon glyphicon-pencil"> </span> Reply </button>
+          </li>
+          <li>
+            <button type="button" class="btn btn-primary btn-xs reply-btn" data="{{ post.id }}"> <span class="glyphicon glyphicon-thumbs-up"></span>Like </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    {% endfor %} </div>
+</div>
+</body>
+</html>

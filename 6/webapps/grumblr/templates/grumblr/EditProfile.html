@@ -1,0 +1,57 @@
+{% extends "grumblr/base1.html" %}
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    {% block title %}
+      <title>EditProfile</title>
+    {% endblock title %}
+    {% block css_reference %}
+    {% load staticfiles %}
+      <link rel="stylesheet" type="text/css" href="{% static 'grumblr/css/editProfile.css' %}"/>
+    {% endblock css_reference%}
+</head>
+<body>
+{% block nav_title %}
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'edit' %}">Settings</a></li>
+    <li><a href="{% url 'myProfile' %}">MyProfile</a></li>
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+{% endblock nav_title %}
+{% block content%}
+    <div class="top">
+          <a href="{% url 'myProfile' %}"><img id="avtar" src="{% url 'getAvatar' user.id %}" alt="avatar of {{ user.first_name }}"></a>
+          <a href="{% url 'myProfile' %}" class="user-name">{{ user.username}}</a>
+    </div>
+    <div class="register_div1 ">
+        {% for field in editForm.visible_fields %}
+        {% for error in field.errors %}
+            <p class="bg-danger err-msg"><span class="glyphicon glyphicon-exclamation-sign"></span> {{error}}</p>
+        {% endfor %}
+        {% endfor %}
+        {% for error in editForm.non_field_errors %}
+            <p class="bg-danger err-msg"><span class="glyphicon glyphicon-exclamation-sign"></span> {{error}}</p>
+        {% endfor %}
+        {% for error in errors %}
+            <p class="bg-danger err-msg"><span class="glyphicon glyphicon-exclamation-sign"></span> {{error}}</p>
+        {% endfor %}
+        {% if msg %}
+           <p class="bg-success err-msg"><span class="glyphicon glyphicon-ok-sign"></span>{{ msg }}</p>
+        {% endif %}
+        <span id="title">Edit You Profile</span><br/>
+        <form method="POST" enctype="multipart/form-data" action="{% url 'edit' %}">
+            {% for field in editForm.visible_fields %}
+            <div class="register_div2">
+                <span>
+                  {{ field.label }}
+                  {{ field }}
+                </span>
+            </div>
+            {% endfor %}
+        	<p><input id="button1" type="submit" value="Update"></p>
+        	{% csrf_token %}
+        </form>
+    </div>
+{% endblock content%}
+</body>
+</html>

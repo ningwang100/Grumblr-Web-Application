@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="/static/calculator/calculator.css">
+      <meta charset="UTF-8">
+      <title>Calculator</title>
+    </head>
+
+<body>
+<div class="theme">
+     <h1>Weclome to use simple calculator</h1>
+</div>   
+  <div class="calculator">
+     <form action="" method="post">
+       <input type="text" name="display" id="display" readonly value={{display}}><br> 
+       <input id="preval" name="preval" type="hidden" value={{preval}}>
+	   <input id="curval" name="curval" type="hidden" value={{curval}}>
+	   <input id="preopt" name="preopt" type="hidden" value={{preopt}}>
+	   <input id="error" name="error"   type="hidden" value={{error}}>	
+       <button type="submit" name="number" value="7" class="Num">7</button>
+       <button type="submit" name="number" value="8" class="Num">8</button>
+       <button type="submit" name="number" value="9" class="Num">9</button>
+       <button type="submit" name="operator" value="+" class="operator">+</button><br>
+       <button type="submit" name="number" value="4" class="Num">4</button>
+       <button type="submit" name="number" value="5" class="Num">5</button>
+       <button type="submit" name="number" value="6" class="Num">6</button>
+       <button type="submit" name="operator" value="-" class="operator">-</button><br>
+       <button type="submit" name="number" value="1" class="Num">1</button>
+       <button type="submit" name="number" value="2" class="Num">2</button>
+       <button type="submit" name="number" value="3" class="Num">3</button>
+       <button type="submit" name="operator" value="*" class="operator">*</button><br>
+       <button type="submit" name="clear" value="C" class="operator">C</button>
+       <button type="submit" name="number" value="0" class="Num">0</button>
+       <button type="submit" name="equal" value="=" class="operator">=</button>
+       <button type="submit" name="operator" value="/" class="operator">/</button>
+       {% csrf_token %}
+      </form>
+  </div>
+</body>
+</html>

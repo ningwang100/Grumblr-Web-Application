@@ -1,0 +1,44 @@
+{% extends "grumblr/base1.html" %}
+<html>
+    <head>
+    <meta charset="UTF-8">
+        {% block title %}
+        <title>login</title>
+        {% endblock title %}
+    {% block css_reference %}
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'grumblr/css/login.css'%}"/>
+    {% endblock css_reference %}
+</head>
+<body>
+    {% block content %}
+    <div class="login_div1">
+        <span class="signIn">Sign In</span><br/>
+        {% if form.errors %}
+              <span id="err-msg">
+                <span id="size" class="glyphicon glyphicon-exclamation-sign"></span>Invalid username or password.
+              </span>
+        {% endif %}
+        <form method="POST" action="{% url 'login' %}">
+            {% for field in form.visible_fields %}
+            <div class="login_div2">
+                <p>
+                    {{ field.label }}
+                    {{ field }}
+                </p>
+            </div>
+            {% endfor %}
+            <div>
+                <label><input type="checkbox" value="remember-me"> Remember me</label>
+                <a href="{% url 'send' %}" id="forget_pwd">Forget password?</a>
+            </div>
+            <div class="login_div3">
+                <input type="submit" value="Sign In"><br/>
+                <a href="{% url 'register' %}">New User?</a>
+            </div>
+            {% csrf_token %}
+         </form>   
+    </div>
+    {% endblock content %}
+</body>
+</html>

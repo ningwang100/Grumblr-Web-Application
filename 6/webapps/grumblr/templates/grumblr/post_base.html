@@ -1,0 +1,57 @@
+ <div class="single" id="post-{{post.id}}">
+      <div class="div5"> <img src="{% url 'getAvatar' post.user.id %}" alt="no image" onclick="location.href='{% url 'otherProfile' post.user.id %}'"> <a href="{% url 'otherProfile' post.user.id %}" >&nbsp; {{post.user.username}}</a><br/>
+        <input class="time" type="text" readonly value="{{post.time}}">
+        <br/>
+        <input class="textarea1" type="text" readonly name="text" value="{{post.content}}">
+      </div>
+      <div>
+        <ul class="faceul">
+          <li>
+            <button type="button" onclick=" " class="btn btn-primary btn-xs reply-btn" flag="other" data="{{ post.id }}"> <span class="glyphicon glyphicon-pencil"></span> Reply </button>
+          </li>
+          <li>
+            <button type="button" class="btn btn-primary btn-xs like-btn" gid="{{ post.id }}">
+              <span class="glyphicon glyphicon-thumbs-up"></span> <span>Like</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+</div>
+
+
+    <div id="post-list">
+    {% for post in posts %}
+    <div class="single" id="post-{{post.id}}">
+      <div class="div5"> <img src="{% url 'getAvatar' post.user.id %}" alt="no image" onclick="location.href='{% url 'otherProfile' post.user.id %}'"> <a href="{% url 'otherProfile' post.user.id %}" >&nbsp; {{post.user.username}}</a><br/>
+        <input class="time" type="text" readonly value="{{post.time}}">
+        <br/>
+        <input class="textarea1" type="text" readonly name="text" value="{{post.content}}">
+      </div>
+      <div>
+        <ul class="faceul">
+          <li>
+            <button type="button" class="btn btn-primary btn-xs reply-btn" flag="other" data="{{ post.id }}"> <span class="glyphicon glyphicon-pencil"></span> Reply </button>
+          </li>
+          <li>
+            <button type="button" class="btn btn-primary btn-xs like-btn" gid="{{ post.id }}">
+              <span class="glyphicon glyphicon-thumbs-up"></span> <span>Like</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+      <div class="reply-box" data="{{post.id}}">
+        <div class="arrow"></div>
+          <ul id="reply-list-{{post.id}}" class="list-unstyled"></ul>
+          <div id="your-reply">
+              <span>Enter Your Reply:</span>
+              <p class="bg-danger" id="reply-err-{{post.id}}"></p>
+              <form action="{% url 'reply' %}" id="comment-form-{{post.id}}" method="POST">
+                  <input id="reply-text-{{post.id}}" name="text" type="text" class="form-control" placeholder="add your comment">
+                  <button class="submit-reply-btn btn btn-primary btn-xs pull-right" data="{{post.id}}">Submit</button>
+                    {% csrf_token %}
+              </form>
+          </div>
+      </div>
+    {% endfor %}
+      </div>
