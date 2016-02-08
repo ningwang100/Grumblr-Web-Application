@@ -6,7 +6,8 @@
 <title>MyFollower</title>
 {% endblock title %}
 {% block css_reference %}
-<link rel="stylesheet" type="text/css" href="/static/grumblr/css/global_stream.css"/>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'grumblr/css/global_stream.css' %}"/>
 {% endblock css_reference %}
 </head>
 <body>

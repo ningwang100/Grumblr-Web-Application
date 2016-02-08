@@ -105,3 +105,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_HOST = "Your-SMTP-host"
+# EMAIL_HOST_USER ='Your-STMP-PASSWORD'
+# EMAI_HOST_PASSWORD = 'YOUR-STMP-password'
+# EMAIL_USE_TLS =True

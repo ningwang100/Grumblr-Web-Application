@@ -2,12 +2,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
+{% load staticfiles %}
 {% block title %}
 <title>Home</title>
 {% endblock title %}
 {% block css_reference %}
-  <link rel="stylesheet" type="text/css" href="/static/grumblr/css/global_stream.css"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'grumblr/css/global_stream.css' %}"/>
+
 {% endblock css_reference %}
+  {% block content %}
+
+  {% endblock content %}
 </head>
 <body>
 </body>

@@ -6,7 +6,8 @@
         <title>login</title>
         {% endblock title %}
     {% block css_reference %}
-        <link rel="stylesheet" type="text/css" href="/static/grumblr/css/login.css"/>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'grumblr/css/login.css'%}"/>
     {% endblock css_reference %}
 </head>
 <body>
@@ -33,7 +34,7 @@
             </div>
             <div class="login_div3">
                 <input type="submit" value="Sign In"><br/>
-                <a href="/register">New User?</a>
+                <a href="{% url 'register' %}">New User?</a>
             </div>
             {% csrf_token %}
          </form>   

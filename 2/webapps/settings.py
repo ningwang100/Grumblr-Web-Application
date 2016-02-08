@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_xrj%210+4lb1^9a6%)0_405s0k$hb_q$sso1*^7f8c!&-4((0'
+SECRET_KEY = 'xk2i3c4b3j$_@=(n=i5&5k44c=jcup80)ago@82ng4y!lk1#r_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'calculator',
+    'grumblr',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -50,6 +50,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
+LOGIN_URL = '/login'
+
+LOGIN_REDIRECT_URL = '/'
+
+AUTH_PROFILE_MODULE='grumblr.UserProfile'
 
 ROOT_URLCONF = 'webapps.urls'
 
@@ -81,7 +86,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

@@ -4,14 +4,13 @@ from string import lower
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
-
+from grumblr.models import *
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(max_length=20,
                                widget=forms.TextInput(attrs={'class': 'user', 'placeholder': 'Username'}))
     password = forms.CharField(max_length=20,
                                widget=forms.PasswordInput(attrs={'class': 'user', 'placeholder': 'Password'}))
-
 
 class RegisterForm(forms.Form):
     email = forms.EmailField(max_length=40,
@@ -26,9 +25,8 @@ class RegisterForm(forms.Form):
                                 label='Last Name',
                                 error_messages={'required': 'Last name is required'},
                                 widget=forms.TextInput(attrs={'class': 'r1', 'placeholder': 'enter your last name'}))
-    age = forms.CharField(max_length=40,
-                          label='Age',
-                          widget=forms.TextInput(attrs={'class': 'r1', 'placeholder': 'enter your age'}))
+    age = forms.IntegerField(label='Age',
+                             widget=forms.TextInput(attrs={'class': 'r1', 'placeholder': 'enter your age'}))
     username = forms.CharField(max_length=40,
                                label='Username',
                                error_messages={'required': 'Username is required'},
@@ -129,10 +127,9 @@ class EditForm(forms.Form):
                                 required=False,
                                 error_messages={'required': 'Last name is required'},
                                 widget=forms.TextInput(attrs={'class': 'r1', 'placeholder': 'enter your last name'}))
-    age = forms.CharField(max_length=40,
-                          label='Age:',
-                          required=False,
-                          widget=forms.TextInput(attrs={'class': 'r1', 'placeholder': 'change your age'}))
+    age = forms.IntegerField(label='Age:',
+                             required=False,
+                             widget=forms.TextInput(attrs={'class': 'r1', 'placeholder': 'change your age'}))
     email = forms.EmailField(max_length=40,
                              label='Email:',
                              required=False,
@@ -179,3 +176,11 @@ class EditForm(forms.Form):
             if password1 or password2:
                 raise forms.ValidationError("Old password are required.")
         return cleaned_data
+
+
+# class CommentForm(forms.Form):
+#     comment = forms.CharField(max_length=42,
+#                               widget=forms.TextInput())
+class CommentForm(forms.Form):
+    text = forms.CharField(max_length=42,
+                              widget = forms.TextInput(attrs={'class':'form-control'}))

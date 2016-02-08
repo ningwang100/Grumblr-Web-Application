@@ -6,7 +6,8 @@
 <title>profile</title>
 {% endblock title %}
 {% block css_reference %}
-<link rel="stylesheet" type="text/css" href="/static/grumblr/css/profile.css"/>
+  {% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'grumblr/css/profile.css' %}"/>
 {% endblock css_reference %}
 </head>
 <body>
@@ -14,7 +15,7 @@
 {% endblock global%}
 {%block left %} <span class="span2"><span class="font1">Weclome to {{user.username}}'s House</span></span>
 <div class="div1"> {% if user.id != login_user.id %}
-  <div class="follow"> <a href="/follow/{{user.id}}">
+  <div class="follow"> <a href="{% url 'follow' user.id %}">
     <button type="button" class="btn btn-primary btn-xs follower"> <span class="glyphicon glyphicon-plus"> </span> {% if following %} Unfollow {% else %} Follow {% endif %} </button>
     </a> </div>
   {% endif %}
@@ -55,12 +56,13 @@
   </div>
   {% endblock left %}
   {% block content %}
+  <div id="post-list">
   <div class="div4"> {% for post in posts %}
     <div class="single">
-      <div class="div6"> <img src="{% url 'grumblr.views.get_avatar' post.user.id %}" alt="no image"> <a href="{% url 'grumblr.views.other_profile' post.user.id%}" class="name">{{post.user.username}}</a><br/>
-        <input class="time" type="text" value="{{post.time}}">
+      <div class="div6"> <img src="{% url 'getAvatar' post.user.id %}" alt="no image"> <a href="{% url 'otherProfile' post.user.id%}" class="name">{{post.user.username}}</a><br/>
+        <input class="time" type="text" readonly value="{{post.time}}">
         <br/>
-        <textarea class="textarea1" name="text" >{{post.content}}</textarea>
+        <input class="textarea1"type="text" readonly name="text" value="{{post.content}}">
       </div>
       <div>
         <ul class="faceul2">
@@ -73,15 +75,29 @@
         </ul>
       </div>
     </div>
+    <div class="reply-box" data="{{post.id}}">
+        <div class="arrow"></div>
+          <ul id="reply-list-{{post.id}}" class="list-unstyled"></ul>
+          <div id="your-reply">
+              <span>Enter Your Reply:</span>
+              <p class="bg-danger" id="reply-err-{{post.id}}"></p>
+              <form action="{% url 'reply' %}" id="comment-form-{{post.id}}" method="POST">
+                  <input id="reply-text-{{post.id}}" name="text" type="text" class="form-control" placeholder="add your comment">
+                  <button class="submit-reply-btn btn btn-primary btn-xs pull-right" data="{{post.id}}">Submit</button>
+                    {% csrf_token %}
+              </form>
+          </div>
+      </div>
     {% endfor %} </div>
+    </div>
 </div>
 {% if user.id == login_user.id %}
 <div  class="div2"> <span id="title1">My Follower</span><br/>
   {% for follower in followers %}
   <div class="list">
     <ul class="faceul3">
-      <li> <img src="{% url 'grumblr.views.get_avatar' follower.user.id %}" alt="no image" onclick="location.href='{% url 'otherProfile' follower.user.id %}'"><br/>
-        <a href="/OtherProfile/{{follower.user.id}}" id="username">{{follower.user.username}}</a> </li>
+      <li> <img src="{% url 'getAvatar' follower.user.id %}" alt="no image" onclick="location.href='{% url 'otherProfile' follower.user.id %}'"><br/>
+        <a href="{% url 'otherProfile' follower.user.id %}" id="username">{{follower.user.username}}</a> </li>
     </ul>
   </div>
   {% endfor %} </div>

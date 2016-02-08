@@ -16,7 +16,7 @@ body{
     background-size:cover;
 	}
 #title{
-	font-size:30px;
+	font-size:20px;
 	font-style:italic;
 	font-weight:bold;
     color:black;
@@ -71,3 +71,13 @@ body{
 #button1:hover{
 	background:rgba(118,228,131,1.00);
 	}	
+.reset_div1{
+	width:25%;
+	height:100%;
+	margin:170px 0 0 200px;
+	border:1px black solid;
+	border-radius:15px;
+	background-image:url(../images/paper5.jpeg);
+	background-repeat:no-repeat;
+    background-size:cover;
+	}

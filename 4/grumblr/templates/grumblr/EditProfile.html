@@ -2,16 +2,18 @@
 <html>
 <head>
     <meta charset="UTF-8">
+
     {% block title %}
       <title>EditProfile</title>
     {% endblock title %}
     {% block css_reference %}
-      <link rel="stylesheet" type="text/css" href="/static/grumblr/css/editProfile.css"/>
+    {% load staticfiles %}
+      <link rel="stylesheet" type="text/css" href="{% static 'grumblr/css/editProfile.css' %}"/>
     {% endblock css_reference%}
 </head>
 <body>
 {% block nav_title %}
-    <li><a href="/">Home</a></li>
+    <li><a href="{% url 'home' %}">Home</a></li>
     <li><a href="{% url 'edit' %}">Settings</a></li>
     <li><a href="{% url 'myProfile' %}">MyProfile</a></li>
     <li><a href="{% url 'logout' %}">Logout</a></li>

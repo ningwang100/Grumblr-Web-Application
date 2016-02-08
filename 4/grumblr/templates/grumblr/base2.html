@@ -2,19 +2,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
+  {% load staticfiles %}
 {% block title %}
 {% endblock title %}
-<link href="/static/grumblr/bootstrap_css/bootstrap.min.css" rel="stylesheet">
+<link href="{% static 'grumblr/bootstrap_css/bootstrap.min.css' %}" rel="stylesheet">
 {% block css_reference %}
 {% endblock css_reference %}
 </head>
 <body>
 <div>
+  <span class="hide" id="update_time">{{update_time}}</span>
+  <span class="hide" id="stream">{{stream}}</span>
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-        <a class="navbar-brand" href="/">Grumblr</a> </div>
+        <a class="navbar-brand" href="{% url 'home' %}">Grumblr</a> </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="{% url 'follower' %}">MyFollower</a></li>
@@ -31,16 +34,17 @@
   </nav>
 </div>
 {%block left %}
-<div class="div2"> <img id="image1" src="/static/grumblr/images/111.jpg" alt="no image"> </div>
+
+<div class="div2"> <img id="image1" src="{% static 'grumblr/images/111.jpg' %}" alt="no image"/> </div>
 <div class="divsum">
   <div class="div3">
     <input type="button" class="button2" value="About" >
     <br/>
-    <input type="button" value="Grumblr" onclick="location.href='/'">
+    <input type="button" value="Grumblr" onclick="location.href='{% url 'home' %}'">
     <br/>
     <input type="button" value="My Profile" onclick="location.href='{% url 'myProfile' %}'">
     <br/>
-    <input type="button" value="All Posts" onclick="location.href='/'">
+    <input type="button" value="All Posts" onclick="location.href='{% url 'home' %}'">
     <br/>
     <input type="button" value="Help" >
     <br/>
@@ -68,26 +72,43 @@
     {% if keyword %}
     <p class="bg-success err-msg"> <span class="glyphicon glyphicon-ok-sign"></span> Search result for "{{ keyword }}": </p>
     {% endif %}
-    
+    <div id="post-list">
     {% for post in posts %}
-    <div class="single">
-      <div class="div5"> <img src="{% url 'grumblr.views.get_avatar' post.user.id %}" alt="no image" onclick="location.href='{% url 'otherProfile' post.user.id %}'"> <a href="{% url 'otherProfile' post.user.id %}" >&nbsp; {{post.user.username}}</a><br/>
-        <input class="time" type="text" value="{{post.time}}">
+    <div class="single" id="post-{{post.id}}">
+      <div class="div5"> <img src="{% url 'getAvatar' post.user.id %}" alt="no image" onclick="location.href='{% url 'otherProfile' post.user.id %}'"> <a href="{% url 'otherProfile' post.user.id %}" >&nbsp; {{post.user.username}}</a><br/>
+        <input class="time" type="text" readonly value="{{post.time}}">
         <br/>
-        <textarea class="textarea1" name="text" readonly>{{post.content}}</textarea>
+        <input class="textarea1" type="text" readonly name="text" value="{{post.content}}">
       </div>
       <div>
         <ul class="faceul">
           <li>
-            <button type="button" class="btn btn-primary btn-xs reply-btn" data="{{ post.id }}"> <span class="glyphicon glyphicon-pencil"></span> Reply </button>
+            <button type="button" class="btn btn-primary btn-xs reply-btn" flag="other" data="{{ post.id }}"> <span class="glyphicon glyphicon-pencil"></span> Reply </button>
           </li>
           <li>
-            <button type="button" class="btn btn-primary btn-xs like-btn" pid="{{ post.id }}"> <span class="glyphicon glyphicon-thumbs-up"></span> <span>Like</span> <span class="badge {% if post.liker.all %}not{% endif %}hide"> {{post.liker.all|length}}</span> </button>
+            <button type="button" class="btn btn-primary btn-xs like-btn" gid="{{ post.id }}">
+              <span class="glyphicon glyphicon-thumbs-up"></span> <span>Like</span>
+            </button>
           </li>
         </ul>
       </div>
     </div>
-    {% endfor %} </div>
+      <div class="reply-box" data="{{post.id}}">
+        <div class="arrow"></div>
+          <ul id="reply-list-{{post.id}}" class="list-unstyled"></ul>
+          <div id="your-reply">
+              <span>Enter Your Reply:</span>
+              <p class="bg-danger" id="reply-err-{{post.id}}"></p>
+              <form action="{% url 'reply' %}" id="comment-form-{{post.id}}" method="POST">
+                  <input id="reply-text-{{post.id}}" name="text" type="text" class="form-control" placeholder="add your comment">
+                  <button class="submit-reply-btn btn btn-primary btn-xs pull-right" data="{{post.id}}">Submit</button>
+                    {% csrf_token %}
+              </form>
+          </div>
+      </div>
+    {% endfor %}
+      </div>
+  </div>
   {% endblock global%}
   {% block friend %}
   <div class="right">
@@ -100,7 +121,7 @@
         <div class="list"> {% if unfollower != newUser %}
           <ul class="faceul3">
             <li> <img src="{% url 'getAvatar' unfollower.user.id %}" alt="no image" onclick="location.href='{% url 'otherProfile' unfollower.user.id %}'"><br/>
-              <a href="/OtherProfile/{{unfollower.user.id}}" id="username">{{unfollower.user.username}}</a> </li>
+              <a href="{% url 'otherProfile' unfollower.user.id %}" >{{unfollower.user.username}}</a> </li>
           </ul>
           {% endif %} </div>
         {% endfor %} </div>
@@ -109,7 +130,7 @@
         <div class="list">
           <ul class="faceul3">
             <li> <img src="{% url 'getAvatar' follower.user.id %}" alt="no image" onclick="location.href='{% url 'otherProfile' follower.user.id %}'"><br/>
-              <a href="/OtherProfile/{{follower.user.id}}" id="username">{{follower.user.username}}</a> </li>
+              <a href="{% url 'otherProfile' follower.user.id %}" id="username">{{follower.user.username}}</a> </li>
           </ul>
         </div>
         {% endfor %} </div>
@@ -117,7 +138,11 @@
   </div>
 </div>
 {% endblock friend %}
+    <script src="{% static 'grumblr/js/jquery-1.11.3.min.js' %}"></script>
+	<script src="{% static 'grumblr/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'grumblr/js/global_stream.js' %}"></script>
   {% block content %}
   {% endblock content %}
+
 </body>
 </html>

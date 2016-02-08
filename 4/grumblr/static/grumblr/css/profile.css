@@ -284,7 +284,6 @@ body{
 	right:29px;
 	top:3px;
     text-align:center;
-	
 	list-style-type: none;
 }
 .faceul3 img{
@@ -296,4 +295,20 @@ body{
 	font-weight:bold;
 	left:20px;
 	padding-bottom:10px;
-	}	
+	}
+.reply-box{
+width:90%;
+margin:0 0 20px 0px;
+}
+.comment{
+	margin:2px 50px 5px 20px;
+	width:470px;
+	height:90px;
+	background:url(../images/b2.jpg);
+}
+.comment img{
+	width:52px;
+	height:50px;
+	margin:1px 0 0 1px;
+	float:left;
+	}

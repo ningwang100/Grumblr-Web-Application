@@ -6,7 +6,8 @@
         <title>login</title>
         {% endblock title %}
     {% block css_reference %}
-        <link rel="stylesheet" type="text/css" href="/static/grumblr/css/login.css"/>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'grumblr/css/login.css' %}"/>
     {% endblock css_reference %}
 </head>
 <body>

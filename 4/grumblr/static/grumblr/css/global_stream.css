@@ -4,10 +4,11 @@ body{
 	background-image:url(../images/yellow2.jpeg);
 	background-size:cover;
 	background-repeat:no-repeat;
+	height:100%;
 	}
 
 .div1{
-	height:1100px;
+	height:100%;
 	width:100%
 	}
 #span1{
@@ -102,7 +103,21 @@ body{
 	margin:0 50px 0 0px;
 	width:650px;
 	height:100px;
-	} 	
+	}
+
+.comment{
+	margin:0 50px 5px 20px;
+	width:630px;
+	height:90px;
+	background:url(../images/b2.jpg);
+}
+.comment img{
+	width:52px;
+	height:50px;
+	margin:1px 0 0 1px;
+	float:left;
+	}
+
 .s1:link{
 	text-decoration: none;
 	margin:5px 0 10px 10px;
@@ -178,12 +193,8 @@ body{
 	margin:3px 0 0 5px;
 	font-size:10px;
 	border:0px;
-	background-color:transparent;
-	}		
-.comment{
-	border:0px;
-	background-color:transparent;
-}
+	}
+
 .div8{
 	
 	margin:0px 0px 0 0px;
@@ -331,4 +342,9 @@ a:link{
 	position:relative;
 	text-align:center;
 	font-weight:bold;
-	}			
+	}
+
+.reply-box{
+width:98%;
+margin:0 0 20px 25px;
+}

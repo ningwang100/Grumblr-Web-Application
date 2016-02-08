@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link href="/static/grumblr/bootstrap_css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/grumblr/css/login.css"/>
+</head>
+<body>
+    <div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Grumblr</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Help</a></li>
+              </ul>
+              <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+              </form>
+            </div>
+          </div>
+    </nav>
+    </div>
+    <div class="login_div1">
+        <span class="signIn">Sign In</span><br/>
+        {% if form.errors %}
+              <span id="err-msg">
+                <span id="size" class="glyphicon glyphicon-exclamation-sign"></span>Invalid username or password.
+              </span>
+        {% endif %}
+        <form method="POST" action="{% url 'django.contrib.auth.views.login' %}">
+            <div class="login_div2">
+                <p>username: 
+                  <input name="username" class="user" type="text" placeholder="username">
+                 </p><br/>
+                <p>password: 
+                  <input name="password" class="user" type="password"  placeholder="Password" >
+                </p>
+            </div>
+            <div>
+                <label><input type="checkbox" value="remember-me"> Remember me</label>
+                <a href="#" id="forget_pwd">Forget password?</a>
+            </div>
+            <div class="login_div3">
+                <input type="submit" value="Sign In"  onclick="location.href='global_stream.html'"><br>
+                <a href="/register">New User?</a>
+            </div>
+            {% csrf_token %}
+         </form>   
+    </div>
+</body>
+</html>

@@ -86,3 +86,10 @@ a:hover{
 	text-align:center;
 	color:rgba(159,33,9,1.00);
 }	
+.r3 {
+	width:600px;
+	
+	position:relative;
+	left:-30px;
+	
+	}

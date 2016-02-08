@@ -7,20 +7,21 @@ class Grumblr(models.Model):
     user = models.ForeignKey(User)
     title = models.CharField(max_length=100, default="", blank=True)
     time = models.DateTimeField(auto_now_add=True)
+    liker = models.ManyToManyField(User,blank=True,related_name="+")
 
     def __unicode__(self):
         return self.content
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User)
-    photopath = models.CharField(max_length=150)
+    user = models.OneToOneField(User,related_name="newuser")
+    avatar = models.ImageField(upload_to='avatar')
+    age = models.CharField(max_length=20)
+    bio = models.CharField(max_length=420)
+    token = models.CharField(max_length=100,default="")
+    follow = models.ManyToManyField(User,blank=True,related_name="followed")
+
     def __unicode__(self):
-        return self.photopath
+        return self.avatar
 
 
-# class UserProfile(models.Model):
-#     user = models.OneToOneField(User)
-#     photopath = models.CharField(max_length=150)
-#
-# User.profile=property(lambda u: UserProfile.objects.get_or_create(user=u)[0])

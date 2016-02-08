@@ -2,9 +2,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+    {% load staticfiles %}
 {% block title %}
 {% endblock title %}
-<link href="/static/grumblr/bootstrap_css/bootstrap.min.css" rel="stylesheet">
+<link href="{% static 'grumblr/bootstrap_css/bootstrap.min.css' %}" rel="stylesheet">
 {% block css_reference %}
 {% endblock css_reference %}
 </head>
@@ -24,10 +25,10 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
           {% block nav_title %}
-            <li><a href="{% url 'django.contrib.auth.views.login' %}">Login</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'login' %}">Settings</a></li>
+            <li><a href="{% url 'login' %}">Profile</a></li>
+            <li><a href="{% url 'login' %}">Help</a></li>
           {% endblock nav_title %}
           </ul>
           <form class="navbar-form navbar-right">
